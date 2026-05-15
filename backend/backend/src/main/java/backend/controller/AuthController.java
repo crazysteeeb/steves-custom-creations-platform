@@ -4,6 +4,8 @@ import backend.dto.RegisterRequest;
 import backend.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import backend.dto.AuthResponse;
+import backend.dto.LoginRequest;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -15,5 +17,10 @@ public class AuthController {
     @PostMapping("/register")
     public String register(@RequestBody RegisterRequest request) {
         return authService.register(request);
+    }
+
+    @PostMapping("/login")
+    public AuthResponse login(@RequestBody LoginRequest request) {
+        return authService.login(request);
     }
 }
